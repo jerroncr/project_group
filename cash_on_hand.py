@@ -27,14 +27,15 @@ def cash_on_hand_function():
         - APPENDING EXTRACTED DATA TO NEW LIST
         '''
         # ITERATING NEW LIST FOR ALL DEFICITS
-        deficit = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day, amount in coh:
-            if previous_amount != 0 and amount < previous_amount:
-                deficit.append([day,amount])
-            previous_amount = amount
-        return deficit
+        deficit_coh = []
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(coh)):
+            if coh[i][1] < coh [i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = coh[i-1][1] - coh[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                deficit_coh.append([coh[i][1],difference])
+        return deficit_coh
     
     # RENAMING DEFICIT FUNCTION
     coh_deficit = deficit_coh()
@@ -46,12 +47,13 @@ def cash_on_hand_function():
         '''
         # ITERATING NEW LIST FOR HIGHEST DEFICIT
         top_1_coh = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day, amount in coh:
-            if previous_amount != 0 and amount < previous_amount:
-                top_1_coh.append([day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(coh)):
+            if coh[i][1] < coh[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = coh[i-1][1] - coh[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                top_1_coh.append([coh[i][1],difference])
         # SORTING LIST AND EXTRACTING ONLY THE HIGHEST DEFICIT
         top_1_coh.sort(key = lambda x:x[1], reverse = True)
         return top_1_coh[0:1]
@@ -66,12 +68,13 @@ def cash_on_hand_function():
         '''
         # ITERATING NEW LIST FOR 2ND HIGHEST DEFICIT
         top_2_coh = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day,amount in coh:
-            if previous_amount != 0 and amount > previous_amount:
-                top_2_coh.append( [day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(coh)):
+            if coh[i][1] < coh[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = coh[i-1][1] - coh[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                top_2_coh.append([coh[i][1],difference])
         # SORTING LIST AND EXTRACTING ONLY THE 2ND HIGHEST DEFICIT
         top_2_coh.sort(key = lambda x:x[1], reverse = True)
         return top_2_coh[1:2]
@@ -86,12 +89,13 @@ def cash_on_hand_function():
         '''
         # ITERATING NEW LIST FOR 3RD HIGHEST DEFICIT
         top_3_coh = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day,amount in coh:
-            if previous_amount != 0 and amount < previous_amount:
-                top_3_coh.append([day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(coh)):
+            if coh[i][1] < coh[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = coh[i-1][1] - coh[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                top_3_coh.append([coh[i][1],difference])
         # SORTING LIST AND EXTRACTING ONLY THE 3RD HIGHEST DEFICIT
         top_3_coh.sort(key = lambda x:x[1], reverse = True)
         return top_3_coh[2:3]

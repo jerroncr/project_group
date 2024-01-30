@@ -31,12 +31,13 @@ def profit_loss_function():
         '''
         # ITERATING NEW LIST FOR ALL DEFICITS
         deficit = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day, amount in pnl:
-            if previous_amount != 0 and amount < previous_amount:
-                deficit.append([day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(pnl)):
+            if pnl[i][1] < pnl[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = pnl[i-1][1] - pnl[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                deficit.append([pnl[i][0],difference])
         return deficit
     
     # RENAMING ALL DEFICIT FUNCTION
@@ -49,12 +50,13 @@ def profit_loss_function():
         '''
         # ITERATING NEW LIST FOR HIGHEST DEFICIT FUNCTION
         top_1_pnl = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day, amount in pnl:
-            if previous_amount != 0 and amount < previous_amount:
-                top_1_pnl.append([day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(pnl)):
+            if pnl[i][1] < pnl[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = pnl[i-1][1] - pnl[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                top_1_pnl.append([pnl[i][0], difference])
         # SORTING LIST AND EXTRACTING ONLY THE HIGHEST DEFICIT
         top_1_pnl.sort(key = lambda x:x[1], reverse = True)
         return top_1_pnl[0:1]
@@ -67,14 +69,15 @@ def profit_loss_function():
         - EXTRACTING THE DATA WITH THE 2ND HIGHEAT DEFICIT
         - APPENDING EXTRACTED DATA TO NEW LIST
         '''
-        # ITERATING NEW LIST FOR 2ND HIGHEST DEFICIT 
+        # ITERATING NEW LIST FOR HIGHEST DEFICIT FUNCTION
         top_2_pnl = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day, amount in pnl:
-            if previous_amount != 0 and amount < previous_amount:
-                top_2_pnl.append([day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(pnl)):
+            if pnl[i][1] < pnl[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = pnl[i-1][1] - pnl[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                top_2_pnl.append([pnl[i][0], difference])
         # SORTING LIST AND EXTRACTING ONLY THE 2ND HIGHEST DEFICIT
         top_2_pnl.sort(key = lambda x:x[1], reverse = True)
         return top_2_pnl[1:2]
@@ -87,14 +90,15 @@ def profit_loss_function():
         - EXTRACTING THE DATA WITH THE 3RD HIGHEST DEFICIT
         - APPENDING EXTRACTED DATA TO NEW LIST
         '''
-        # ITERATING NEW LIST FOR 3RD HIGHEST DEFICIT
+        # ITERATING NEW LIST FOR HIGHEST DEFICIT FUNCTION
         top_3_pnl = []
-        previous_amount = 0
-        # EXTRACTING AND APPENDING ALL DEFICIT TO NEW LIST
-        for day, amount in pnl:
-            if previous_amount != 0 and amount < previous_amount:
-                top_3_pnl.append([day,amount])
-            previous_amount = amount
+        # CHECK IF AMOUNT THE DAY AFTER HAS A DEFICIT FROM THE DAY BEFORE
+        for i in range(1,len(pnl)):
+            if pnl[i][1] < pnl[i-1][1]:
+                # CALCULATING THE DIFFERENCE
+                difference = pnl[i-1][1] - pnl[i][1]
+                # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
+                top_3_pnl.append([pnl[i][0], difference])
         # SORTING LIST AND EXTRACTING ONLY THE 3RD HIGHEST DEFICIT
         top_3_pnl.sort(key=lambda x:x[1], reverse = True)
         return top_3_pnl[2:3]
