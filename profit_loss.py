@@ -57,8 +57,11 @@ def profit_loss_function():
                 difference = pnl[i-1][1] - pnl[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
                 top_1_pnl.append([pnl[i][0], difference])
-        # SORTING LIST AND EXTRACTING ONLY THE HIGHEST DEFICIT
-        top_1_pnl.sort(key = lambda x:x[1], reverse = True)
+        # ITERATING SORTING FUNCTION BASED ON THE 2ND NUMBER IN THE LSIT
+        def sort_pnl(item):
+            return item[1]
+        # EXTRACTING ONLY THE HIGHEST DEFICIT
+        top_1_pnl.sort(key = sort_pnl, reverse = True)
         return top_1_pnl[0:1]
     
     # RENAMING HIGHEST DEFICIT FUNCTION
@@ -78,8 +81,11 @@ def profit_loss_function():
                 difference = pnl[i-1][1] - pnl[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
                 top_2_pnl.append([pnl[i][0], difference])
-        # SORTING LIST AND EXTRACTING ONLY THE 2ND HIGHEST DEFICIT
-        top_2_pnl.sort(key = lambda x:x[1], reverse = True)
+        # ITERATING SORTING FUNCTION BASED ON THE 2ND NUMBER IN THE LIST
+        def sort_pnl(item):
+            return item[1]
+        # EXTRACTING ONLY THE 2ND HIGHEST DEFICIT
+        top_2_pnl.sort(key = sort_pnl, reverse = True)
         return top_2_pnl[1:2]
 
     # RENAMING 2ND HIGHEST DEFICIT FUNCTION
@@ -99,8 +105,11 @@ def profit_loss_function():
                 difference = pnl[i-1][1] - pnl[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
                 top_3_pnl.append([pnl[i][0], difference])
-        # SORTING LIST AND EXTRACTING ONLY THE 3RD HIGHEST DEFICIT
-        top_3_pnl.sort(key=lambda x:x[1], reverse = True)
+        # ITERATING SORTING FUNCTION BASED ON THE 2ND NUMBER IN THE LIST
+        def sort_pnl(item):
+            return item[1]
+        # EXTRACTING ONLY THE 3RD HIGHEST DEFICIT
+        top_3_pnl.sort(key=sort_pnl, reverse = True)
         return top_3_pnl[2:3]
     
     # RENAMING 3RD HIGHEST DEFICIT FUNCTION

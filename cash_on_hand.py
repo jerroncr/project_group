@@ -34,7 +34,7 @@ def cash_on_hand_function():
                 # CALCULATING THE DIFFERENCE
                 difference = coh[i-1][1] - coh[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
-                deficit_coh.append([coh[i][1],difference])
+                deficit_coh.append([coh[i][0],difference])
         return deficit_coh
     
     # RENAMING DEFICIT FUNCTION
@@ -53,9 +53,12 @@ def cash_on_hand_function():
                 # CALCULATING THE DIFFERENCE
                 difference = coh[i-1][1] - coh[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
-                top_1_coh.append([coh[i][1],difference])
-        # SORTING LIST AND EXTRACTING ONLY THE HIGHEST DEFICIT
-        top_1_coh.sort(key = lambda x:x[1], reverse = True)
+                top_1_coh.append([coh[i][0],difference])
+        # ITERATING SORTING FUNCTION BASED ON THE 2ND NUMBER IN THE LIST
+        def sort_pnl(item):
+            return item[1] 
+        # EXTRACTING ONLY THE HIGHEST DEFICIT
+        top_1_coh.sort(key = sort_pnl, reverse = True)
         return top_1_coh[0:1]
     
     # RENAMING HIGHEST DEFICIT FUNCTION
@@ -74,9 +77,12 @@ def cash_on_hand_function():
                 # CALCULATING THE DIFFERENCE
                 difference = coh[i-1][1] - coh[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
-                top_2_coh.append([coh[i][1],difference])
-        # SORTING LIST AND EXTRACTING ONLY THE 2ND HIGHEST DEFICIT
-        top_2_coh.sort(key = lambda x:x[1], reverse = True)
+                top_2_coh.append([coh[i][0],difference])
+        # ITERATING SORTING FUNCTION BASED ON THE 2ND NUMBER IN THE LIST
+        def sort_pnl(item):
+            return item[1]
+        # EXTRACTING ONLY THE 2ND HIGHEST DEFICIT
+        top_2_coh.sort(key = sort_pnl, reverse = True)
         return top_2_coh[1:2]
 
     # RENAMING 2ND HIGHEST DEFICIT FUNCTION
@@ -95,9 +101,12 @@ def cash_on_hand_function():
                 # CALCULATING THE DIFFERENCE
                 difference = coh[i-1][1] - coh[i][1]
                 # APPENDING THE DAY AND DIFFERENCE TO THE NEW LIST
-                top_3_coh.append([coh[i][1],difference])
-        # SORTING LIST AND EXTRACTING ONLY THE 3RD HIGHEST DEFICIT
-        top_3_coh.sort(key = lambda x:x[1], reverse = True)
+                top_3_coh.append([coh[i][0],difference])
+        # ITERATING SORTING FUNCTION BASED ON THE 2ND NUMBER IN THE LIST
+        def sort_pnl(item):
+            return item[1]
+        # EXTRACTING ONLY THE 3RD HIGHEST DEFICIT
+        top_3_coh.sort(key = sort_pnl, reverse = True)
         return top_3_coh[2:3]
     
     # RENAMING 3RD HIGHEST DEFICIT FUNCTION
